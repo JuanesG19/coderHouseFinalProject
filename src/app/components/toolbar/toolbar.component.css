@@ -1,0 +1,11 @@
+/* Toolbar */
+mat-toolbar {
+  background: #1f2023;
+  color: white;
+  border-bottom: solid 1px #333;
+}
+
+.menu-button span {
+  padding-left: 10px;
+  color: #cacaca;
+}

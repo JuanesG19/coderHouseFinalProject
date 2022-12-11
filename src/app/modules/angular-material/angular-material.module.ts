@@ -1,0 +1,29 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+
+@NgModule({
+  declarations: [],
+  imports: [CommonModule],
+  exports: [
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+    MatDividerModule,
+    MatCheckboxModule,
+    MatGridListModule,
+    MatTableModule,
+  ],
+})
+export class AngularMaterialModule {}

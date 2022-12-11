@@ -1,0 +1,91 @@
+<mat-sidenav-container class="layourContainer">
+  <!-- SideNav -->
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="sideNavContainer">
+    <button
+      mat-button
+      [ngStyle]="{
+        'padding-top': '15px',
+        'justify-content': 'space-between'
+      }"
+    >
+      <img [src]="coderSlogan" class="coderSlogan" />
+    </button>
+
+    <div class="sideNavButtons">
+      <!-- Inicio -->
+      <button mat-button class="menu-button">
+        <mat-icon>home</mat-icon>
+        <span>Inicio</span>
+      </button>
+
+      <!-- Cursos y Carreras -->
+      <button mat-button class="menu-button">
+        <mat-icon>person</mat-icon>
+        <span>Cursos y Carreras</span>
+      </button>
+
+      <!-- Servicios -->
+      <button mat-button class="menu-button">
+        <mat-icon>star</mat-icon>
+        <span>Servicios</span>
+      </button>
+
+      <!-- Chats -->
+      <button mat-button class="menu-button">
+        <mat-icon>forum</mat-icon>
+        <span>Chat</span>
+      </button>
+
+      <!-- Beneficios -->
+      <button mat-button class="menu-button">
+        <mat-icon>redeem</mat-icon>
+        <span>Beneficios</span>
+      </button>
+
+      <!-- Proximos Eventos -->
+      <button mat-button class="menu-button">
+        <mat-icon>event_available</mat-icon>
+        <span>Proximos Eventos</span>
+      </button>
+
+      <!-- Ayuda -->
+      <button mat-button class="menu-button footerSideNav">
+        <mat-icon>help</mat-icon>
+        <span>Ayuda</span>
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <p>
+      <!-- Toolbar -->
+      <mat-toolbar>
+        <!-- Izquierda -->
+
+        <!-- SideNav Button -->
+        <button mat-icon-button mat-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+
+        <!-- Logo Coder -->
+        <button mat-button>
+          <img [src]="logoCoder" class="logoApp" />
+        </button>
+
+        <!-- Derecha -->
+        <span class="example-spacer"></span>
+        <button
+          mat-icon-button
+          aria-label="Example icon button with a menu icon"
+        >
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <img
+          class="avatar mat-elevation-z8"
+          src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
+        />
+      </mat-toolbar>
+    </p>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

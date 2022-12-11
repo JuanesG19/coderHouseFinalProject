@@ -1,0 +1,95 @@
+
+/* ToolBar */
+mat-toolbar {
+  background: #1f2023;
+  color: white;
+  border-bottom: solid 1px #333;
+}
+
+.logoApp {
+  max-width: 100%;
+  max-height: 35px;
+}
+
+/* SideNav */
+
+.sideNavContainer{
+  border-right: solid 1px #333;
+}
+
+.coderSlogan {
+  max-width: 100%;
+  max-height: 50px;
+}
+
+.sideNavButtons {
+  padding-top: 50px;
+}
+
+mat-sidenav span {
+  padding-left: 20px;
+  color: #cacaca;
+}
+
+.sideNavButtons .footerSideNav {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 20px;
+}
+
+mat-sidenav {
+  width: 250px;
+  border-right: none;
+  background: #1f2023;
+  color: white;
+  text-align: center;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+  padding-bottom: 10px;
+}
+
+.helpButton {
+  vertical-align: bottom;
+
+  align-items: flex-end;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.name {
+  margin-top: 8px;
+  font-weight: normal;
+}
+
+.designation {
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: lightgrey;
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+mat-icon {
+  color: #cacaca;
+  -webkit-text-stroke-width: 0px;
+}
