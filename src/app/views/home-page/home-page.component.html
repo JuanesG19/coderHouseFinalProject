@@ -3,15 +3,22 @@
   <app-toolbar></app-toolbar>
 
   <div class="tableContainer">
+    <section class="optionsButtons">
+      <div class="example-button-row">
+        <button mat-raised-button (click)="openDialog()">
+          Agregar Estudiante
+        </button>
+        <button mat-raised-button (click)="eliminarTodos()">
+          Eliminar Todos
+        </button>
+        <button mat-raised-button (click)="generarEstudiantes()">
+          Generar Estudiantes
+        </button>
+      </div>
+    </section>
+
     <!-- Table Estudiantes -->
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    
-      <!-- Position Column -->
-      <ng-container matColumnDef="posicion">
-        <th mat-header-cell *matHeaderCellDef>#</th>
-        <td mat-cell *matCellDef="let element">{{ element.posicion }}</td>
-      </ng-container>
-
       <!-- Name Column -->
       <ng-container matColumnDef="nombres">
         <th mat-header-cell *matHeaderCellDef>Nombre</th>
@@ -56,6 +63,7 @@
           <button
             mat-icon-button
             aria-label="Example icon button with a menu icon"
+            (click)="eliminarUno(element)"
           >
             <mat-icon>delete</mat-icon>
           </button>

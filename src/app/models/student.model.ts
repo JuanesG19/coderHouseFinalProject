@@ -1,5 +1,4 @@
-export interface Student{
-  posicion: number;
+export class Student{
   nombres: string;
   apellidos: string;
   correo: string;

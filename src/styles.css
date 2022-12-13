@@ -1,15 +1,27 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .example-spacer {
   flex: 1 1 auto;
 }
 
-p{
+p {
   margin: 0 !important;
   padding: 0 !important;
 }
 
-/* #1f2023 */
-/* #333 */
-/* #27282D */
+mat-dialog-container {
+  background-color: #1f2023 !important;
+}
+
+/* #1f2023  -> Gris noche */
+/* #333 -> Gris claro*/
+/* #27282D -> Gris mas claro */
