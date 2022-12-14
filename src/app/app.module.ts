@@ -5,13 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AngularMaterialModule } from './modules/angular-material.module';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { LoginComponent } from './views/login/login.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { RegisterModalComponent } from './components/register-modal/register-modal.component';
+import { RegisterModalComponent } from './components/register-student-modal/register-modal.component';
+import { CoursesComponent } from './views/courses/courses.component';
+import { RegisterCourseModalComponent } from './components/register-course-modal/register-course-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,8 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
     LoginComponent,
     ToolbarComponent,
     RegisterModalComponent,
+    CoursesComponent,
+    RegisterCourseModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
     FormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

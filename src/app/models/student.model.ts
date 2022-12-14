@@ -2,6 +2,7 @@ export class Student{
   nombres: string;
   apellidos: string;
   correo: string;
-  pais: string;
+  comision: string;
+  curso: string;
   telefono: string;
 }

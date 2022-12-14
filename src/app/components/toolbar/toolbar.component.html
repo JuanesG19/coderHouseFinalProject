@@ -4,23 +4,28 @@
 
   <!-- Nombre Curso -->
   <button mat-button>
-    <p [ngStyle]="{ 'font-size': '25px' }">Angular</p>
+    <p [ngStyle]="{ 'font-size': '25px' }">AQU VA EL CURSO</p>
   </button>
 
   <!-- Derecha -->
   <span class="example-spacer"></span>
 
-  <button mat-button class="menu-button">
+  <button mat-button class="menu-button" [routerLink]="['/courses']">
+    <mat-icon>list_alt</mat-icon>
+    <span>Lista Cursos</span>
+  </button>
+
+  <button mat-button class="menu-button" [routerLink]="['/']" >
     <mat-icon>groups</mat-icon>
     <span>Lista Estudiantes</span>
   </button>
 
-  <button mat-button class="menu-button">
+  <button mat-button class="menu-button" [routerLink]="['/']">
     <mat-icon>military_tech</mat-icon>
     <span>Top 10</span>
   </button>
 
-  <button mat-button class="menu-button">
+  <button mat-button class="menu-button" [routerLink]="['/chat']">
     <mat-icon>forum</mat-icon>
     <span>Chat</span>
   </button>

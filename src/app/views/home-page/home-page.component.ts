@@ -1,31 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from 'src/app/models/student.model';
 import { MatDialog } from '@angular/material/dialog';
-import { RegisterModalComponent } from 'src/app/components/register-modal/register-modal.component';
-
-const ELEMENT_DATA: Student[] = [
-  {
-    nombres: 'Juan',
-    apellidos: 'Gomez',
-    correo: 'juanes@gmail.com',
-    pais: 'Colombia',
-    telefono: '3124876984',
-  },
-  {
-    nombres: 'Luis',
-    apellidos: 'Hernandez',
-    correo: 'lucho@gmail.com',
-    pais: 'Mexico',
-    telefono: '138541681',
-  },
-  {
-    nombres: 'Laura',
-    apellidos: 'Luna',
-    correo: 'lau@gmail.com',
-    pais: 'Guatemala',
-    telefono: '6168135165',
-  },
-];
+import { RegisterModalComponent } from 'src/app/components/register-student-modal/register-modal.component';
+import { JsonService } from 'src/app/services/json.service';
 
 @Component({
   selector: 'app-home-page',
@@ -37,38 +14,74 @@ export class HomePageComponent implements OnInit {
     'nombres',
     'apellidos',
     'correo',
-    'pais',
+    'comision',
+    'curso',
     'telefono',
     'opciones',
   ];
 
-  dataSource = ELEMENT_DATA;
+  studentsList: Student[] = [];
 
-  constructor(private matDialog: MatDialog) {}
+  constructor(private matDialog: MatDialog, public json: JsonService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
+    this.json.getJson().subscribe((res: any) => {
+      const firstStep = JSON.stringify(res);
+      const data = JSON.parse(firstStep);
+
+      data.forEach((value, i) => {
+        const list = value['estudiantes'];
+
+        list.forEach((listValue) => {
+          this.studentsList.push(listValue);
+        });
+      });
+
+      this.studentsList = Object.values(this.studentsList);
+    });
+  }
 
   openDialog() {
     const dialog = this.matDialog.open(RegisterModalComponent);
 
     dialog.afterClosed().subscribe((value) => {
       if (value) {
-        this.dataSource = [...this.dataSource, value];
+        this.studentsList = [...this.studentsList, value];
       }
     });
   }
 
   eliminarTodos() {
-    this.dataSource = [];
+    this.studentsList = [];
   }
 
   eliminarUno(student: Student) {
-    this.dataSource = this.dataSource.filter(
+    this.studentsList = this.studentsList.filter(
       (deleteStudent) => deleteStudent.correo != student.correo
     );
   }
 
+  editar(student: Student) {
+    const dialog = this.matDialog.open(RegisterModalComponent, {
+      data: student,
+    });
+
+    dialog.afterClosed().subscribe((data) => {
+      if (data) {
+        this.studentsList = this.studentsList.map((newStudent) =>
+          newStudent.correo === student.correo
+            ? { ...newStudent, ...data }
+            : newStudent
+        );
+      }
+    });
+  }
+
   generarEstudiantes() {
-    this.dataSource = ELEMENT_DATA;
+    this.loadData();
   }
 }

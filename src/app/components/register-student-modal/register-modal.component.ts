@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatDialog } from '@angular/material/dialog';
-
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Student } from 'src/app/models/student.model';
 
 @Component({
   selector: 'app-register-modal',
@@ -24,7 +24,14 @@ export class RegisterModalComponent implements OnInit {
     telefono: this.formTelefono,
   });
 
-  constructor(private dialogRef: MatDialogRef<RegisterModalComponent>) {}
+  constructor(
+    private dialogRef: MatDialogRef<RegisterModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Student | null
+  ) {
+    if (data) {
+      this.studentForm.patchValue(data);
+    }
+  }
 
   ngOnInit(): void {}
 

@@ -1,12 +1,18 @@
 <mat-sidenav-container class="layourContainer">
   <!-- SideNav -->
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="sideNavContainer">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    [(opened)]="opened"
+    class="sideNavContainer"
+  >
     <button
       mat-button
       [ngStyle]="{
         'padding-top': '15px',
         'justify-content': 'space-between'
       }"
+      [routerLink]="['/']"
     >
       <img [src]="coderSlogan" class="coderSlogan" />
     </button>

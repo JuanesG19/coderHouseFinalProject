@@ -1,0 +1,95 @@
+[
+  {
+    "nombre": "Angular",
+    "comision": "32330",
+    "profesor": "Vin Diesel",
+    "estudiantes": [
+      {
+        "nombres": "Juan",
+        "apellidos": "Gomez",
+        "correo": "juanes@gmail.com",
+        "comision": "32330",
+        "curso": "Angular",
+        "telefono": "3124876984"
+      },
+      {
+        "nombres": "Luis",
+        "apellidos": "Hernandez",
+        "correo": "lucho@gmail.com",
+        "comision": "32330",
+        "curso": "Angular",
+        "telefono": "138541681"
+      },
+      {
+        "nombres": "Laura",
+        "apellidos": "Luna",
+        "correo": "lau@gmail.com",
+        "comision": "32330",
+        "curso": "Angular",
+        "telefono": "6168135165"
+      }
+    ]
+  },
+  {
+    "nombre": "HTML",
+    "comision": "53540",
+    "profesor": "Michael Jackson",
+    "estudiantes": [
+      {
+        "nombres": "Julian",
+        "apellidos": "Hernandez",
+        "correo": "Juli@gmail.com",
+        "comision": "53540",
+        "curso": "HTML",
+        "telefono": "45456456"
+      },
+      {
+        "nombres": "Maicol",
+        "apellidos": "Nianpira",
+        "correo": "mycol@gmail.com",
+        "comision": "53540",
+        "curso": "HTML",
+        "telefono": "796789789"
+      },
+      {
+        "nombres": "Camila",
+        "apellidos": "Alvarez",
+        "correo": "cami@gmail.com",
+        "comision": "53540",
+        "curso": "HTML",
+        "telefono": "666666666"
+      }
+    ]
+  },
+  {
+    "nombre": "CSS",
+    "comision": "78945",
+    "profesor": "Axel Rose",
+    "estudiantes": [
+      {
+        "nombres": "Andres",
+        "apellidos": "Silva",
+        "correo": "andres@gmail.com",
+        "comision": "78945",
+        "curso": "CSS",
+        "telefono": "456456456"
+      },
+      {
+        "nombres": "Armando",
+        "apellidos": "Casas",
+        "correo": "armando@gmail.com",
+        "comision": "78945",
+        "curso": "CSS",
+        "telefono": "123123"
+      },
+      {
+        "nombres": "Prospero",
+        "apellidos": "Año",
+        "correo": "prospero@gmail.com",
+        "comision": "78945",
+        "curso": "CSS",
+        "telefono": "768576"
+      }
+    ]
+  }
+]

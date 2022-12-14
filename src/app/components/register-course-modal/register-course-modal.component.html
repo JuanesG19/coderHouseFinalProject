@@ -1,0 +1,32 @@
+<h1 mat-dialog-title [ngStyle]="{ color: 'white' }">Curso</h1>
+<div class="studentForm" mat-dialog-content>
+  <form [formGroup]="courseForm">
+    <!-- Nombres -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput [formControl]="formNombre" />
+    </mat-form-field>
+
+    <!-- Apellidos -->
+    <mat-form-field appearance="fill">
+      <mat-label>Comisión</mat-label>
+      <input matInput [formControl]="formComision" />
+    </mat-form-field>
+
+    <!-- Correo -->
+    <mat-form-field appearance="fill">
+      <mat-label>Profesor</mat-label>
+      <input matInput [formControl]="formProfesor" />
+    </mat-form-field>
+
+    <!-- Pais -->
+    <mat-form-field appearance="fill">
+      <mat-label>Estudiantes</mat-label>
+      <input matInput [formControl]="formEstudiantes" />
+    </mat-form-field>
+
+    <div class="sendButton">
+      <button mat-button [mat-dialog-close]="courseForm.value">Enviar</button>
+    </div>
+  </form>
+</div>

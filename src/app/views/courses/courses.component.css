@@ -1,0 +1,32 @@
+.homePage {
+  background-color: #1f2023;
+  height: 100%;
+}
+
+.tableContainer {
+  padding: 15px;
+}
+
+/* Option Buttons */
+
+.optionsButtons {
+  padding-bottom: 15px;
+}
+
+.optionsButtons button {
+  margin-right: 20px;
+  background-color: #27282d;
+  color: white;
+}
+
+/* Table */
+table {
+  width: 100%;
+  background-color: #27282d;
+  color: white;
+}
+
+th,
+td {
+  color: white;
+}
