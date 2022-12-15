@@ -32,8 +32,6 @@ export class CoursesComponent implements OnInit {
       const data = JSON.parse(firstStep);
 
       data.forEach((value) => {
-        var estudiantes = 0;
-
         this.courses.push({
           nombre: value['nombre'],
           comision: value['comision'],

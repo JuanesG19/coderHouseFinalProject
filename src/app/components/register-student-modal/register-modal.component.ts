@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/models/student.model';
@@ -10,17 +10,19 @@ import { Student } from 'src/app/models/student.model';
   styleUrls: ['./register-modal.component.css'],
 })
 export class RegisterModalComponent implements OnInit {
-  formNombres = new FormControl();
-  formApellidos = new FormControl();
-  formCorreo = new FormControl();
-  formPais = new FormControl();
-  formTelefono = new FormControl();
+  formNombres = new FormControl('',[Validators.required, Validators.nullValidator]);
+  formApellidos = new FormControl('',[Validators.required, Validators.nullValidator]);
+  formCorreo = new FormControl('',[Validators.required, , Validators.nullValidator, Validators.email]);
+  formComision = new FormControl('',[Validators.required, Validators.nullValidator]);
+  formCurso = new FormControl('',[Validators.required, Validators.nullValidator]);
+  formTelefono = new FormControl('',[Validators.required, Validators.nullValidator]);
 
   studentForm = new FormGroup({
     nombres: this.formNombres,
     apellidos: this.formApellidos,
     correo: this.formCorreo,
-    pais: this.formPais,
+    comision: this.formComision,
+    curso: this.formCurso,
     telefono: this.formTelefono,
   });
 

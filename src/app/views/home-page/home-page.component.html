@@ -1,77 +1,81 @@
-<div class="homePage">
-  <!-- Toolbar Interna -->
-  <app-toolbar></app-toolbar>
+<div class="homePageContainer">
+  <div class="homePage">
+    <!-- Toolbar Interna -->
+    <app-toolbar></app-toolbar>
 
-  <div class="tableContainer">
-    <section class="optionsButtons">
-      <div class="example-button-row">
-        <button mat-raised-button (click)="openDialog()">
-          Agregar Estudiante
-        </button>
-        <button mat-raised-button (click)="eliminarTodos()">
-          Eliminar Todos
-        </button>
-        <button mat-raised-button (click)="generarEstudiantes()">
-          Generar Estudiantes
-        </button>
+    <div class="tableContainer">
+      <section class="optionsButtons">
+        <div class="example-button-row">
+          <button mat-raised-button (click)="openDialog()">
+            Agregar Estudiante
+          </button>
+          <button mat-raised-button (click)="eliminarTodos()">
+            Eliminar Todos
+          </button>
+          <button mat-raised-button (click)="generarEstudiantes()">
+            Generar Estudiantes
+          </button>
+        </div>
+      </section>
+
+      <!-- Table Estudiantes -->
+      <div class="studentTable">
+        <table mat-table [dataSource]="studentsList">
+          <!-- Nombres -->
+          <ng-container matColumnDef="nombres">
+            <th mat-header-cell *matHeaderCellDef>Nombres</th>
+            <td mat-cell *matCellDef="let element">{{ element.nombres }}</td>
+          </ng-container>
+
+          <!-- Apellidos -->
+          <ng-container matColumnDef="apellidos">
+            <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+            <td mat-cell *matCellDef="let element">{{ element.apellidos }}</td>
+          </ng-container>
+
+          <!-- Correo -->
+          <ng-container matColumnDef="correo">
+            <th mat-header-cell *matHeaderCellDef>Correo</th>
+            <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
+          </ng-container>
+
+          <!-- Comisión -->
+          <ng-container matColumnDef="comision">
+            <th mat-header-cell *matHeaderCellDef>Comisión</th>
+            <td mat-cell *matCellDef="let element"># {{ element.comision }}</td>
+          </ng-container>
+
+          <!-- Curso -->
+          <ng-container matColumnDef="curso">
+            <th mat-header-cell *matHeaderCellDef>Curso</th>
+            <td mat-cell *matCellDef="let element">{{ element.curso }}</td>
+          </ng-container>
+
+          <!-- Telefono -->
+          <ng-container matColumnDef="telefono">
+            <th mat-header-cell *matHeaderCellDef>Telefono</th>
+            <td mat-cell *matCellDef="let element">{{ element.telefono }}</td>
+          </ng-container>
+
+          <!-- Opciones -->
+          <ng-container matColumnDef="opciones">
+            <th mat-header-cell *matHeaderCellDef>Opciones</th>
+            <!-- Editar -->
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button (click)="editar(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <!-- Eliminar -->
+              <button mat-icon-button (click)="eliminarUno(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
       </div>
-    </section>
-
-    <!-- Table Estudiantes -->
-    <table mat-table [dataSource]="studentsList" class="mat-elevation-z8">
-      <!-- Nombres -->
-      <ng-container matColumnDef="nombres">
-        <th mat-header-cell *matHeaderCellDef>Nombres</th>
-        <td mat-cell *matCellDef="let element">{{ element.nombres }}</td>
-      </ng-container>
-
-      <!-- Apellidos -->
-      <ng-container matColumnDef="apellidos">
-        <th mat-header-cell *matHeaderCellDef>Apellidos</th>
-        <td mat-cell *matCellDef="let element">{{ element.apellidos }}</td>
-      </ng-container>
-
-      <!-- Correo -->
-      <ng-container matColumnDef="correo">
-        <th mat-header-cell *matHeaderCellDef>Correo</th>
-        <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
-      </ng-container>
-
-      <!-- Comisión -->
-      <ng-container matColumnDef="comision">
-        <th mat-header-cell *matHeaderCellDef>Comisión</th>
-        <td mat-cell *matCellDef="let element"># {{ element.comision }}</td>
-      </ng-container>
-
-      <!-- Curso -->
-      <ng-container matColumnDef="curso">
-        <th mat-header-cell *matHeaderCellDef>Curso</th>
-        <td mat-cell *matCellDef="let element">{{ element.curso }}</td>
-      </ng-container>
-
-      <!-- Telefono -->
-      <ng-container matColumnDef="telefono">
-        <th mat-header-cell *matHeaderCellDef>Telefono</th>
-        <td mat-cell *matCellDef="let element">{{ element.telefono }}</td>
-      </ng-container>
-
-      <!-- Opciones -->
-      <ng-container matColumnDef="opciones">
-        <th mat-header-cell *matHeaderCellDef>Opciones</th>
-        <!-- Editar -->
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="editar(element)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <!-- Eliminar -->
-          <button mat-icon-button (click)="eliminarUno(element)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+    </div>
   </div>
 </div>

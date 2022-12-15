@@ -1,10 +1,23 @@
+.homePageContainer{
+  background-color: #1f2023;
+  height: 100%
+}
+
 .homePage {
   background-color: #1f2023;
-  height: 100%;
 }
 
 .tableContainer {
   padding: 15px;
+
+}
+
+table tr.mat-row {
+  height: 15px;
+}
+
+.studentTable {
+  
 }
 
 /* Option Buttons */

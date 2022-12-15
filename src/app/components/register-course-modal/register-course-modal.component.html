@@ -5,28 +5,46 @@
     <mat-form-field appearance="fill">
       <mat-label>Nombre</mat-label>
       <input matInput [formControl]="formNombre" />
+      <mat-error *ngIf="formNombre.invalid"
+        >Se debe ingresar el nombre del curso</mat-error
+      >
     </mat-form-field>
 
     <!-- Apellidos -->
     <mat-form-field appearance="fill">
       <mat-label>Comisión</mat-label>
       <input matInput [formControl]="formComision" />
+      <mat-error *ngIf="formComision.invalid"
+        >Se debe ingresar la comision</mat-error
+      >
     </mat-form-field>
 
     <!-- Correo -->
     <mat-form-field appearance="fill">
       <mat-label>Profesor</mat-label>
       <input matInput [formControl]="formProfesor" />
+      <mat-error *ngIf="formProfesor.invalid"
+        >Se debe ingresar el nombre</mat-error
+      >
     </mat-form-field>
 
     <!-- Pais -->
     <mat-form-field appearance="fill">
       <mat-label>Estudiantes</mat-label>
       <input matInput [formControl]="formEstudiantes" />
+      <mat-error *ngIf="formEstudiantes.invalid"
+        >Se debe ingresar el numero aprox</mat-error
+      >
     </mat-form-field>
 
     <div class="sendButton">
-      <button mat-button [mat-dialog-close]="courseForm.value">Enviar</button>
+      <button
+        mat-button
+        [mat-dialog-close]="courseForm.value"
+        [disabled]="!courseForm.valid"
+      >
+        Enviar
+      </button>
     </div>
   </form>
 </div>

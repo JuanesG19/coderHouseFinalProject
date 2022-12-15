@@ -1,6 +1,10 @@
-.homePage {
+.coursesContainer{
   background-color: #1f2023;
   height: 100%;
+}
+
+.courses {
+  background-color: #1f2023;
 }
 
 .tableContainer {

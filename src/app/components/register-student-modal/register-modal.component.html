@@ -5,34 +5,62 @@
     <mat-form-field appearance="fill">
       <mat-label>Nombres</mat-label>
       <input matInput [formControl]="formNombres" />
+      <mat-error *ngIf="formNombres.invalid"
+        >Se debe ingresar sus nombres</mat-error
+      >
     </mat-form-field>
 
     <!-- Apellidos -->
     <mat-form-field appearance="fill">
       <mat-label>Apellidos</mat-label>
       <input matInput [formControl]="formApellidos" />
+      <mat-error *ngIf="formApellidos.invalid"
+        >Se debe ingresar un sus apellidos</mat-error
+      >
     </mat-form-field>
 
     <!-- Correo -->
     <mat-form-field appearance="fill">
       <mat-label>Correo</mat-label>
       <input matInput [formControl]="formCorreo" />
+      <mat-error *ngIf="formCorreo.invalid"
+        >Se debe ingresar un correo correcto</mat-error
+      >
     </mat-form-field>
 
-    <!-- Pais -->
+    <!-- Comision -->
     <mat-form-field appearance="fill">
-      <mat-label>Pais</mat-label>
-      <input matInput [formControl]="formPais" />
+      <mat-label>Comision</mat-label>
+      <input matInput [formControl]="formComision" />
+      <mat-error *ngIf="formComision.invalid"
+        >Se debe ingresar un pais</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Curso -->
+    <mat-form-field appearance="fill">
+      <mat-label>Curso</mat-label>
+      <input matInput [formControl]="formCurso" />
+      <mat-error *ngIf="formCurso.invalid">Se debe ingresar un pais</mat-error>
     </mat-form-field>
 
     <!-- Telefono -->
     <mat-form-field appearance="fill">
       <mat-label>Telefono</mat-label>
       <input matInput [formControl]="formTelefono" />
+      <mat-error *ngIf="formTelefono.invalid"
+        >Se debe ingresar su telefono</mat-error
+      >
     </mat-form-field>
 
     <div class="sendButton">
-      <button mat-button [mat-dialog-close]="studentForm.value">Enviar</button>
+      <button
+        mat-button
+        [mat-dialog-close]="studentForm.value"
+        [disabled]="!studentForm.valid"
+      >
+        Enviar
+      </button>
     </div>
   </form>
 </div>
