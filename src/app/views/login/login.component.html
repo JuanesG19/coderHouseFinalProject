@@ -1,23 +1,44 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-<mat-card-content>
-<form >
-<p>
-  <mat-form-field>
-    <input type="text" matInput placeholder="Username" formControlName="username">
-  </mat-form-field>
-</p>
+<div class="login">
+  <mat-grid-list cols="2">
+    <!-- Izquierda -->
+    <mat-grid-tile class="izquierda">
+      <div class="loginContainer">
+        <mat-card class="matCardLogin">
+          <mat-card-title>Login</mat-card-title>
+          <mat-card-content>
+            <form [formGroup]="loginForm">
+              <!-- Nombres -->
+              <mat-form-field appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input matInput [formControl]="formLogin" />
+                <mat-error *ngIf="formLogin.invalid"
+                  >Se debe ingresar su usuario</mat-error
+                >
+              </mat-form-field>
 
-<p>
-  <mat-form-field>
-    <input type="password" matInput placeholder="Password" formControlName="password">
-  </mat-form-field>
-</p>
+              <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input matInput [formControl]="formPassword" />
+                <mat-error *ngIf="formPassword.invalid"
+                  >Se debe ingresar su contraseña</mat-error
+                >
+              </mat-form-field>
 
-<div class="button">
-  <button type="submit" mat-button>Login</button>
+              <div class="button">
+                <button type="submit" mat-button>Entrar</button>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+    <!-- Derecha -->
+    <mat-grid-tile class="derecha">
+      <p class="information">
+        Aprendes con referentes de la industria
+        <span [ngStyle]="{ color: '#e5f876' }">desde donde estés.</span>
+      </p>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
-
-</form>
-</mat-card-content>
-</mat-card>

@@ -1,6 +1,6 @@
-.homePageContainer{
+.homePageContainer {
   background-color: #1f2023;
-  height: 100%
+  height: 100%;
 }
 
 .homePage {
@@ -9,7 +9,6 @@
 
 .tableContainer {
   padding: 15px;
-
 }
 
 table tr.mat-row {
@@ -17,7 +16,6 @@ table tr.mat-row {
 }
 
 .studentTable {
-  
 }
 
 /* Option Buttons */

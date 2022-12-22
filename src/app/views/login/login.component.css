@@ -1,9 +1,13 @@
-:host {
-  display: flex;
-  justify-content: center;
-  margin: 100px 0px;
+.login {
+  height: 100% !important;
 }
 
+.izquierda {
+}
+
+.derecha {
+  background-color: #1f2023 !important;
+}
 .mat-form-field {
   width: 100%;
   min-width: 300px;
@@ -25,4 +29,8 @@ mat-card-content {
 .button {
   display: flex;
   justify-content: flex-end;
+}
+
+.information {
+  font-size: 3em;
 }
