@@ -43,4 +43,11 @@ export class CoursesService {
   deleteCourse(course) {
     return this.firestore.collection('courses').doc(course.id).delete();
   }
+
+  updateStudents(id, students) {
+    return this.firestore
+      .collection('courses')
+      .doc(id)
+      .update({ estudiantes: students });
+  }
 }

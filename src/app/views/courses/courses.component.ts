@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterCourseModalComponent } from 'src/app/components/register-course-modal/register-course-modal.component';
 import { Course } from 'src/app/models/course.model';
+import { Student } from 'src/app/models/student.model';
 import { JsonService } from 'src/app/services/json.service';
+import { StudentsService } from 'src/app/services/students.service';
 import { CoursesService } from '../../services/courses.service';
 
 @Component({
@@ -20,10 +22,13 @@ export class CoursesComponent implements OnInit {
   ];
 
   courses: Course[] = [];
+  prueba: Course[] = [];
+  studentsList: Student[] = [];
 
   constructor(
     private matDialog: MatDialog,
-    public coursesService: CoursesService
+    public coursesService: CoursesService,
+    public studentsService: StudentsService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +36,7 @@ export class CoursesComponent implements OnInit {
   }
 
   loadData() {
+
     this.coursesService.getCourses().subscribe((res) => {
       this.courses = res.map((e) => {
         return {
@@ -39,6 +45,34 @@ export class CoursesComponent implements OnInit {
         };
       });
     });
+    
+    //Obtiene los estudiantes
+    this.studentsService.getStudents().subscribe((res) => {
+      this.studentsList = res.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as Student),
+        };
+      });
+      for (let i = 0; i < this.courses.length; i++) {
+        var count = 0;
+        for (let o = 0; o < this.studentsList.length; o++) {
+          if (this.courses[i].comision === this.studentsList[o].comision) {
+            count++;
+          }
+        }
+        var newCourse = {
+          id: this.courses[i].id,
+          nombre: this.courses[i].nombre,
+          comision: this.courses[i].comision,
+          profesor: this.courses[i].profesor,
+          estudiantes: count,
+        };
+        this.coursesService.updateStudents(newCourse.id, count);
+      }
+    });
+
+    
   }
 
   openDialog() {
@@ -46,13 +80,13 @@ export class CoursesComponent implements OnInit {
 
     dialog.afterClosed().subscribe((value) => {
       if (value) {
-        var newStudent = {
+        var newCourse = {
           nombre: value.nombre,
           comision: value.comision,
           profesor: value.profesor,
           estudiantes: 0,
         };
-        this.coursesService.createCourse(newStudent);
+        this.coursesService.createCourse(newCourse);
       }
     });
   }

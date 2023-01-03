@@ -3,6 +3,7 @@ import { Student } from 'src/app/models/student.model';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterModalComponent } from 'src/app/components/register-student-modal/register-modal.component';
 import { JsonService } from 'src/app/services/json.service';
+import { StudentsService } from '../../services/students.service';
 
 @Component({
   selector: 'app-home-page',
@@ -22,26 +23,24 @@ export class HomePageComponent implements OnInit {
 
   studentsList: Student[] = [];
 
-  constructor(private matDialog: MatDialog, public json: JsonService) {}
+  constructor(
+    private matDialog: MatDialog,
+    public studentsService: StudentsService,
+    public json: JsonService
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
   }
 
   loadData() {
-    this.json.getJson().subscribe((res: any) => {
-      const firstStep = JSON.stringify(res);
-      const data = JSON.parse(firstStep);
-
-      data.forEach((value, i) => {
-        const list = value['estudiantes'];
-
-        list.forEach((listValue) => {
-          this.studentsList.push(listValue);
-        });
+    this.studentsService.getStudents().subscribe((res) => {
+      this.studentsList = res.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as Student),
+        };
       });
-
-      this.studentsList = Object.values(this.studentsList);
     });
   }
 
@@ -50,19 +49,25 @@ export class HomePageComponent implements OnInit {
 
     dialog.afterClosed().subscribe((value) => {
       if (value) {
-        this.studentsList = [...this.studentsList, value];
+        var newStudent = {
+          nombres: value.nombres,
+          apellidos: value.apellidos,
+          correo: value.correo,
+          comision: value.comision,
+          nombreCurso: value.nombreCurso,
+          telefono: value.telefono,
+        };
+        this.studentsService.createStudent(newStudent);
       }
     });
   }
 
   eliminarTodos() {
-    this.studentsList = [];
+    /* this.studentsList = []; */
   }
 
   eliminarUno(student: Student) {
-    this.studentsList = this.studentsList.filter(
-      (deleteStudent) => deleteStudent.correo != student.correo
-    );
+    this.studentsService.deleteStudent(student);
   }
 
   editar(student: Student) {
@@ -71,17 +76,7 @@ export class HomePageComponent implements OnInit {
     });
 
     dialog.afterClosed().subscribe((data) => {
-      if (data) {
-        this.studentsList = this.studentsList.map((newStudent) =>
-          newStudent.correo === student.correo
-            ? { ...newStudent, ...data }
-            : newStudent
-        );
-      }
+      this.studentsService.updateStudent(data, student.id);
     });
-  }
-
-  generarEstudiantes() {
-    this.loadData();
   }
 }

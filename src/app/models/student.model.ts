@@ -1,8 +1,9 @@
 export class Student{
+  id: string;
   nombres: string;
   apellidos: string;
   correo: string;
   comision: string;
-  curso: string;
+  nombreCurso: string;
   telefono: string;
 }

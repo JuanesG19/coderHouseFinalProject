@@ -12,9 +12,6 @@
           <button mat-raised-button (click)="eliminarTodos()">
             Eliminar Todos
           </button>
-          <button mat-raised-button (click)="generarEstudiantes()">
-            Generar Estudiantes
-          </button>
         </div>
       </section>
 
@@ -48,7 +45,9 @@
           <!-- Curso -->
           <ng-container matColumnDef="curso">
             <th mat-header-cell *matHeaderCellDef>Curso</th>
-            <td mat-cell *matCellDef="let element">{{ element.curso }}</td>
+            <td mat-cell *matCellDef="let element">
+              {{ element.nombreCurso }}
+            </td>
           </ng-container>
 
           <!-- Telefono -->
