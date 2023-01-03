@@ -15,6 +15,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { RegisterModalComponent } from './components/register-student-modal/register-modal.component';
 import { CoursesComponent } from './views/courses/courses.component';
 import { RegisterCourseModalComponent } from './components/register-course-modal/register-course-modal.component';
+import { FirebaseModule } from './modules/firebase.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RegisterCourseModalComponent } from './components/register-course-modal
     AngularMaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FirebaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Console } from 'console';
 import { Course } from 'src/app/models/course.model';
 
 @Component({
@@ -10,10 +11,22 @@ import { Course } from 'src/app/models/course.model';
   styleUrls: ['./register-course-modal.component.css'],
 })
 export class RegisterCourseModalComponent implements OnInit {
-  formNombre = new FormControl('',[Validators.required, Validators.nullValidator]);
-  formComision = new FormControl('',[Validators.required, Validators.nullValidator]);
-  formProfesor = new FormControl('',[Validators.required, Validators.nullValidator]);
-  formEstudiantes = new FormControl('',[Validators.required, Validators.nullValidator]);
+  formNombre = new FormControl('', [
+    Validators.required,
+    Validators.nullValidator,
+  ]);
+  formComision = new FormControl('', [
+    Validators.required,
+    Validators.nullValidator,
+  ]);
+  formProfesor = new FormControl('', [
+    Validators.required,
+    Validators.nullValidator,
+  ]);
+  formEstudiantes = new FormControl('', [
+    Validators.required,
+    Validators.nullValidator,
+  ]);
 
   courseForm = new FormGroup({
     nombre: this.formNombre,
@@ -28,7 +41,6 @@ export class RegisterCourseModalComponent implements OnInit {
   ) {
     if (data) {
       this.courseForm.patchValue(data);
-      console.log(data);
     }
   }
 

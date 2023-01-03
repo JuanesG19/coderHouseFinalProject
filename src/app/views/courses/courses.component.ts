@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RegisterCourseModalComponent } from 'src/app/components/register-course-modal/register-course-modal.component';
 import { Course } from 'src/app/models/course.model';
 import { JsonService } from 'src/app/services/json.service';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -20,27 +21,23 @@ export class CoursesComponent implements OnInit {
 
   courses: Course[] = [];
 
-  constructor(private matDialog: MatDialog, public json: JsonService) {}
+  constructor(
+    private matDialog: MatDialog,
+    public coursesService: CoursesService
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
   }
 
   loadData() {
-    this.json.getJson().subscribe((res: any) => {
-      const firstStep = JSON.stringify(res);
-      const data = JSON.parse(firstStep);
-
-      data.forEach((value) => {
-        this.courses.push({
-          nombre: value['nombre'],
-          comision: value['comision'],
-          profesor: value['profesor'],
-          estudiantes: Object.keys(value['estudiantes']).length,
-        });
+    this.coursesService.getCourses().subscribe((res) => {
+      this.courses = res.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as Course),
+        };
       });
-
-      this.courses = Object.values(this.courses);
     });
   }
 
@@ -49,20 +46,17 @@ export class CoursesComponent implements OnInit {
 
     dialog.afterClosed().subscribe((value) => {
       if (value) {
-        this.courses = [...this.courses, value];
-        console.log(value);
+        this.coursesService.createCourse(value);
       }
     });
   }
 
   eliminarCursos() {
-    this.courses = [];
+    /* this.courses = []; */
   }
 
   eliminarUno(course: Course) {
-    this.courses = this.courses.filter(
-      (deleteCourse) => deleteCourse.comision != course.comision
-    );
+    this.coursesService.deleteCourse(course);
   }
 
   editar(course: Course) {
@@ -71,17 +65,7 @@ export class CoursesComponent implements OnInit {
     });
 
     dialog.afterClosed().subscribe((data) => {
-      if (data) {
-        this.courses = this.courses.map((newCourse) =>
-          newCourse.comision === course.comision
-            ? { ...newCourse, ...data }
-            : newCourse
-        );
-      }
+      this.coursesService.updateCourse(data, course.id);
     });
-  }
-
-  generarCursos() {
-    this.loadData();
   }
 }
