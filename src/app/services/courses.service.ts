@@ -16,7 +16,7 @@ export class CoursesService {
     return this.firestore.collection('courses').doc(id).valueChanges();
   }
 
-  createCourse(course: Course) {
+  createCourse(course) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection('courses')

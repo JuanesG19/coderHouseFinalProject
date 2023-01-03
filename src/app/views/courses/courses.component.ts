@@ -46,7 +46,13 @@ export class CoursesComponent implements OnInit {
 
     dialog.afterClosed().subscribe((value) => {
       if (value) {
-        this.coursesService.createCourse(value);
+        var newStudent = {
+          nombre: value.nombre,
+          comision: value.comision,
+          profesor: value.profesor,
+          estudiantes: 0,
+        };
+        this.coursesService.createCourse(newStudent);
       }
     });
   }

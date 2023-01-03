@@ -23,16 +23,11 @@ export class RegisterCourseModalComponent implements OnInit {
     Validators.required,
     Validators.nullValidator,
   ]);
-  formEstudiantes = new FormControl('', [
-    Validators.required,
-    Validators.nullValidator,
-  ]);
 
   courseForm = new FormGroup({
     nombre: this.formNombre,
     comision: this.formComision,
     profesor: this.formProfesor,
-    estudiantes: this.formEstudiantes,
   });
 
   constructor(
