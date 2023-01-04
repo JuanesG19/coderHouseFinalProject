@@ -36,8 +36,7 @@ export class StudentsService {
     return this.firestore.collection('students').doc(id).update({
       nombres: student.nombres,
       apellidos: student.apellidos,
-      correo: student.correo,
-      comision: student.comision,
+      cursos : student.cursos,
       nombreCurso: student.nombreCurso,
       telefono: student.telefono,
     });

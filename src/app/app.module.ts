@@ -16,6 +16,7 @@ import { RegisterModalComponent } from './components/register-student-modal/regi
 import { CoursesComponent } from './views/courses/courses.component';
 import { RegisterCourseModalComponent } from './components/register-course-modal/register-course-modal.component';
 import { FirebaseModule } from './modules/firebase.module';
+import { StudentProfileComponent } from './views/student-profile/student-profile.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FirebaseModule } from './modules/firebase.module';
     RegisterModalComponent,
     CoursesComponent,
     RegisterCourseModalComponent,
+    StudentProfileComponent,
   ],
   imports: [
     BrowserModule,

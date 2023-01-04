@@ -15,10 +15,9 @@ export class HomePageComponent implements OnInit {
     'nombres',
     'apellidos',
     'correo',
-    'comision',
-    'curso',
     'telefono',
     'opciones',
+    'cursos'
   ];
 
   studentsList: Student[] = [];
@@ -41,6 +40,7 @@ export class HomePageComponent implements OnInit {
           ...(e.payload.doc.data() as Student),
         };
       });
+      console.log(this.studentsList);
     });
   }
 
@@ -53,8 +53,11 @@ export class HomePageComponent implements OnInit {
           nombres: value.nombres,
           apellidos: value.apellidos,
           correo: value.correo,
-          comision: value.comision,
-          nombreCurso: value.nombreCurso,
+          comision: [
+            { comision: '6666', nombreCurso: 'CSS' },
+            { comision: '1234', nombreCurso: 'Angular' },
+            { comision: '7777', nombreCurso: 'HTML' },
+          ],
           telefono: value.telefono,
         };
         this.studentsService.createStudent(newStudent);

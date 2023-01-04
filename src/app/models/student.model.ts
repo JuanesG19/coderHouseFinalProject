@@ -2,8 +2,7 @@ export class Student{
   id: string;
   nombres: string;
   apellidos: string;
-  correo: string;
-  comision: string;
+  cursos: any[];
   nombreCurso: string;
   telefono: string;
 }

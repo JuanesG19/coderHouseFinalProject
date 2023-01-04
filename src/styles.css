@@ -22,6 +22,11 @@ mat-dialog-container {
   background-color: #1f2023 !important;
 }
 
+.row {
+  width: 100%;
+  height: 100%;
+}
+
 /* #1f2023  -> Gris noche */
 /* #333 -> Gris claro*/
 /* #27282D -> Gris mas claro */

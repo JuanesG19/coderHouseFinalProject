@@ -1,0 +1,43 @@
+.izquierda {
+  background-color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.derecha {
+  background-color: yellow;
+}
+
+.profileContainer {
+  text-align: center;
+  background-color: #1f2023;
+  padding: 30px;
+  margin: 0 auto;
+  width: 80%;
+  height: 80%;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid #e5f876;
+}
+
+.information {
+  padding-top: 20px;
+  text-align: left;
+  color: #e5f876;
+}
+
+.information a {
+  color: white;
+}
+
+.data {
+  padding-top: 20px;
+}
+
+p {
+  font-size: 20px;
+}

@@ -54,7 +54,7 @@ export class CoursesComponent implements OnInit {
           ...(e.payload.doc.data() as Student),
         };
       });
-      for (let i = 0; i < this.courses.length; i++) {
+      /* for (let i = 0; i < this.courses.length; i++) {
         var count = 0;
         for (let o = 0; o < this.studentsList.length; o++) {
           if (this.courses[i].comision === this.studentsList[o].comision) {
@@ -69,7 +69,7 @@ export class CoursesComponent implements OnInit {
           estudiantes: count,
         };
         this.coursesService.updateStudents(newCourse.id, count);
-      }
+      } */
     });
 
     
