@@ -16,6 +16,7 @@ export class HomePageComponent implements OnInit {
     'apellidos',
     'correo',
     'telefono',
+    'pais',
     'opciones',
     'cursos'
   ];
@@ -25,7 +26,6 @@ export class HomePageComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     public studentsService: StudentsService,
-    public json: JsonService
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +59,8 @@ export class HomePageComponent implements OnInit {
             { comision: '7777', nombreCurso: 'HTML' },
           ],
           telefono: value.telefono,
+          pais: value.pais,
+
         };
         this.studentsService.createStudent(newStudent);
       }

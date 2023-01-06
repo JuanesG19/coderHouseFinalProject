@@ -3,6 +3,7 @@ export class Student{
   nombres: string;
   apellidos: string;
   cursos: any[];
-  nombreCurso: string;
   telefono: string;
+  correo: string;
+  pais: string;
 }

@@ -41,3 +41,11 @@ img {
 p {
   font-size: 20px;
 }
+
+.coursesContainer{
+  width: 300px;
+}
+
+table {
+  width: 100%;
+}
