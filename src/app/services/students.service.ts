@@ -46,4 +46,24 @@ export class StudentsService {
   deleteStudent(student) {
     return this.firestore.collection('students').doc(student.id).delete();
   }
+
+  deleteStudentsCourse(id, comision) {
+    var student;
+    var courses;
+
+    this.getStudentById(id).subscribe((res) => {
+      student = res as Student;
+      courses = student['cursos'];
+      courses = courses.filter((cursos) => cursos.comision != comision);
+      return this.firestore.collection('students').doc(id).update({
+        cursos: courses,
+      });
+    });
+  }
+
+  addStudentsCourse(id, newCourse) {
+    return this.firestore.collection('students').doc(id).update({
+      cursos: newCourse,
+    });
+  }
 }

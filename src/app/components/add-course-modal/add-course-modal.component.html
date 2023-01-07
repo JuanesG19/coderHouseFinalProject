@@ -1,0 +1,29 @@
+<h1 mat-dialog-title [ngStyle]="{ color: 'white' }">Nuevo Curso</h1>
+<div class="studentForm" mat-dialog-content>
+  <form [formGroup]="courseForm">
+    <!-- Curso -->
+    
+    <!-- Comision -->
+    <mat-form-field appearance="fill">
+      <mat-label>Comision</mat-label>
+      <mat-select [formControl]="formComision">
+        <mat-option *ngFor="let course of courses" [value]="course.comision">
+          {{ course.comision }} ( {{course.nombre}})
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formComision.invalid"
+        >Se debe ingresar una comision</mat-error
+      >
+    </mat-form-field>
+
+    <div class="sendButton">
+      <button
+        mat-button
+        [mat-dialog-close]="courseForm.value"
+        [disabled]="!courseForm.valid"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>

@@ -5,7 +5,7 @@
 }
 
 .derecha {
-  background-color: yellow;
+  background-color: #1f2023;
 }
 
 .profileContainer {
@@ -14,7 +14,15 @@
   padding: 30px;
   margin: 0 auto;
   width: 80%;
-  height: 80%;
+  height: 95%;
+}
+
+.goBackButton mat-icon{
+  color: #e5f876;
+}
+
+.goBackButton{
+  text-align: start;
 }
 
 img {
@@ -42,10 +50,40 @@ p {
   font-size: 20px;
 }
 
-.coursesContainer{
-  width: 300px;
+table {
+  width: 100% !important;
+  text-align: center;
+  background-color: #27282d;
+  color: white;
 }
 
-table {
-  width: 100%;
+.tableContainer {
+  padding-top: 20px;
+}
+
+th,
+td {
+  text-align: center !important;
+  color: white;
+  font-size: 14px !important;
+}
+
+.coursesTitle {
+  padding-top: 20px;
+  color: #e5f876;
+  text-align: center;
+}
+
+.coursesTitle p {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.courseButton {
+  padding-top: 20px;
+}
+
+.courseButton button {
+  background-color: #27282d;
+  color: #e5f876;
 }

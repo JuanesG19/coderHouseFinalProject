@@ -1,0 +1,24 @@
+.studentForm {
+  background-color: #1f2023;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+mat-form-field,
+mat-label {
+  color: white;
+}
+
+button {
+  background-color: #27282d;
+  color: white;
+}
+
+.sendButton {
+  width: 100%;
+  text-align: center;
+}

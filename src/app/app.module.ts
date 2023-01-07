@@ -17,6 +17,7 @@ import { CoursesComponent } from './views/courses/courses.component';
 import { RegisterCourseModalComponent } from './components/register-course-modal/register-course-modal.component';
 import { FirebaseModule } from './modules/firebase.module';
 import { StudentProfileComponent } from './views/student-profile/student-profile.component';
+import { AddCourseModalComponent } from './components/add-course-modal/add-course-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { StudentProfileComponent } from './views/student-profile/student-profile
     CoursesComponent,
     RegisterCourseModalComponent,
     StudentProfileComponent,
+    AddCourseModalComponent,
   ],
   imports: [
     BrowserModule,
