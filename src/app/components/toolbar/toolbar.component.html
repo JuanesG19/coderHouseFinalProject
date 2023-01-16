@@ -10,17 +10,17 @@
   <!-- Derecha -->
   <span class="example-spacer"></span>
 
-  <button mat-button class="menu-button" [routerLink]="['/courses']">
+  <button mat-button class="menu-button" [routerLink]="['/']">
     <mat-icon>list_alt</mat-icon>
     <span>Lista Cursos</span>
   </button>
 
-  <button mat-button class="menu-button" [routerLink]="['/']" >
+  <button mat-button class="menu-button" [routerLink]="['/students']" *ngIf="loggeado">
     <mat-icon>groups</mat-icon>
     <span>Lista Estudiantes</span>
   </button>
 
-  <button mat-button class="menu-button" [routerLink]="['/']">
+  <button mat-button class="menu-button" [routerLink]="['/students']">
     <mat-icon>military_tech</mat-icon>
     <span>Top 10</span>
   </button>

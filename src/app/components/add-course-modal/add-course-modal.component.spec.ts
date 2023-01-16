@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 import { AddCourseModalComponent } from './add-course-modal.component';
 
@@ -8,7 +10,10 @@ describe('AddCourseModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddCourseModalComponent ]
+      declarations: [ AddCourseModalComponent ],
+      imports: [
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+      ],
     })
     .compileComponents();
   });

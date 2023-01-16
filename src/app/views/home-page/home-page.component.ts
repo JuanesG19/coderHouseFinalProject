@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { RegisterModalComponent } from 'src/app/components/register-student-modal/register-modal.component';
 import { JsonService } from 'src/app/services/json.service';
 import { StudentsService } from '../../services/students.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -18,18 +20,25 @@ export class HomePageComponent implements OnInit {
     'telefono',
     'pais',
     'opciones',
-    'cursos'
+    'cursos',
   ];
 
   studentsList: Student[] = [];
+  loggeado: Boolean = false;
 
   constructor(
     private matDialog: MatDialog,
     public studentsService: StudentsService,
+    private loginService: LoginService,
   ) {}
 
   ngOnInit(): void {
     this.loadData();
+
+    this.loginService.loggeadoObservable.subscribe((res) => {
+      this.loggeado = res;
+      console.log(this.loggeado);
+    });
   }
 
   loadData() {
@@ -60,7 +69,6 @@ export class HomePageComponent implements OnInit {
           ],
           telefono: value.telefono,
           pais: value.pais,
-
         };
         this.studentsService.createStudent(newStudent);
       }

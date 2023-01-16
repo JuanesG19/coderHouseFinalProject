@@ -25,13 +25,13 @@
       </button>
 
       <!-- Alumnos -->
-      <button mat-button class="menu-button" [routerLink]="['/']">
+      <button mat-button class="menu-button" [routerLink]="['/students']" *ngIf="loggeado">
         <mat-icon>person</mat-icon>
         <span>Alumnos</span>
       </button>
 
       <!-- Cursos -->
-      <button mat-button class="menu-button" [routerLink]="['/courses']">
+      <button mat-button class="menu-button" [routerLink]="['/']">
         <mat-icon>star</mat-icon>
         <span>Cursos</span>
       </button>
@@ -80,16 +80,21 @@
 
         <!-- Derecha -->
         <span class="example-spacer"></span>
-        <button
-          mat-icon-button
-          aria-label="Example icon button with a menu icon"
-        >
-          <mat-icon>notifications</mat-icon>
-        </button>
-        <img
-          class="avatar mat-elevation-z8"
-          src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
-        />
+        <div *ngIf="loggeado; else noLoggeado">
+          <button
+            mat-icon-button
+            aria-label="Example icon button with a menu icon"
+          >
+            <mat-icon>notifications</mat-icon>
+          </button>
+          <img
+            class="avatar mat-elevation-z8"
+            src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
+          />
+        </div>
+        <ng-template #noLoggeado>
+          <button mat-button [routerLink]="['/login']">Iniciar Sesión</button>
+        </ng-template>
       </mat-toolbar>
     </p>
     <router-outlet></router-outlet>

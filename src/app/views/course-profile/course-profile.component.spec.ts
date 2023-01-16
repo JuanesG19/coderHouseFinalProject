@@ -1,30 +1,29 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire/compat';
-import { MatDialogModule } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { environment } from 'src/environments/environment';
 
-import { HomePageComponent } from './home-page.component';
+import { CourseProfileComponent } from './course-profile.component';
 
-describe('HomePageComponent', () => {
-  let component: HomePageComponent;
-  let fixture: ComponentFixture<HomePageComponent>;
+describe('CourseProfileComponent', () => {
+  let component: CourseProfileComponent;
+  let fixture: ComponentFixture<CourseProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomePageComponent],
+      declarations: [ CourseProfileComponent ],
       imports: [
-        MatDialogModule,
         RouterTestingModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         HttpClientTestingModule,
       ],
-    }).compileComponents();
+    })
+    .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomePageComponent);
+    fixture = TestBed.createComponent(CourseProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

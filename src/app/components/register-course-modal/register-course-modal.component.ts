@@ -1,8 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Injector, OnInit, Optional } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Console } from 'console';
 import { Course } from 'src/app/models/course.model';
 
 @Component({
@@ -30,12 +29,15 @@ export class RegisterCourseModalComponent implements OnInit {
     profesor: this.formProfesor,
   });
 
+  private dialogData = null;
   constructor(
-    private dialogRef: MatDialogRef<RegisterCourseModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Course | null
+    @Optional() private dialogRef: MatDialogRef<RegisterCourseModalComponent>,
+    private injector: Injector
   ) {
-    if (data) {
-      this.courseForm.patchValue(data);
+    this.dialogData = this.injector.get(MAT_DIALOG_DATA, null);
+
+    if (this.dialogData) {
+      this.courseForm.patchValue(this.dialogData);
     }
   }
 

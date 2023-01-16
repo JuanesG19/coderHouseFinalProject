@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Course } from '../models/course.model';
 import { Student } from '../models/student.model';
+import { CoursesService } from './courses.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentsService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private coursesService: CoursesService
+  ) {}
 
   getStudents() {
     return this.firestore.collection('students').snapshotChanges();

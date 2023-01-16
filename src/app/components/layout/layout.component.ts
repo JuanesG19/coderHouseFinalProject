@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,15 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
   opened: boolean;
+  loggeado: Boolean = false;
 
   /* Images */
   logoCoder: string;
-  coderSlogan: string
+  coderSlogan: string;
 
-  constructor() {
-    this.logoCoder = "../../../../assets/img/logoCoder.png"
-    this.coderSlogan = "../../../../assets/img/coderSlogan.png"
+  constructor(private loginService: LoginService) {
+    this.logoCoder = '../../../../assets/img/logoCoder.png';
+    this.coderSlogan = '../../../../assets/img/coderSlogan.png';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginService.loggeadoObservable.subscribe((res) => {
+      this.loggeado = res;
+    });
+  }
 }

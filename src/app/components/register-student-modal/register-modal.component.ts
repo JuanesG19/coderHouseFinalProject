@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Injector, OnInit, Optional } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -28,8 +28,6 @@ export class RegisterModalComponent implements OnInit {
     Validators.nullValidator,
     Validators.email,
   ]);
-  formComision = new FormControl('', []);
-  formNombreCurso = new FormControl('', []);
   formTelefono = new FormControl('', [
     Validators.required,
     Validators.nullValidator,
@@ -39,18 +37,20 @@ export class RegisterModalComponent implements OnInit {
     nombres: this.formNombres,
     apellidos: this.formApellidos,
     correo: this.formCorreo,
-    comision: this.formComision,
-    nombreCurso: this.formNombreCurso,
     telefono: this.formTelefono,
   });
 
+  private dialogData = null;
+
   constructor(
-    private dialogRef: MatDialogRef<RegisterModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Student | null,
+    @Optional() private dialogRef: MatDialogRef<RegisterModalComponent>,
+    private injector: Injector,
     public coursesService: CoursesService
   ) {
-    if (data) {
-      this.studentForm.patchValue(data);
+    this.dialogData = this.injector.get(MAT_DIALOG_DATA, null);
+    this.dialogData;
+    if (this.dialogData) {
+      this.studentForm.patchValue(this.dialogData);
     }
   }
 

@@ -1,0 +1,84 @@
+<div class="row">
+  <!-- Izquierda -->
+  <div class="col-md-5 izquierda">
+    <div class="profileContainer">
+      <div class="goBackButton">
+        <button mat-icon-button [routerLink]="['/']">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+
+      <div class="information">
+        <div class="data">
+          <p>
+            Nombre: <a>{{ course[0].nombre }}</a>
+          </p>
+        </div>
+        <div class="data">
+          <p>
+            Comision: <a>{{ course[0].comision }}</a>
+          </p>
+        </div>
+        <div class="data">
+          <p>
+            Profesor: <a>{{ course[0].profesor }}</a>
+          </p>
+        </div>
+        <div class="data">
+          <p>
+            Estudiantes: <a>{{ course[0].estudiantes }}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Derecha -->
+  <div class="col-md-7 derecha">
+    <div>
+      <div class="coursesTitle">
+        <p>{{ "Estudiantes" | uppercase }}</p>
+      </div>
+      <div class="courses">
+        <div class="tableContainer">
+          <!-- Table Cursos -->
+          <table mat-table [dataSource]="studentsCourse">
+            <!-- Nombres -->
+            <ng-container matColumnDef="nombres">
+              <th mat-header-cell *matHeaderCellDef>Nombres</th>
+              <td mat-cell *matCellDef="let element">X</td>
+            </ng-container>
+
+            <!-- Apellidos -->
+            <ng-container matColumnDef="apellidos">
+              <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+              <td mat-cell *matCellDef="let element">
+                X
+              </td>
+            </ng-container>
+
+            <!-- Correo -->
+            <ng-container matColumnDef="correo">
+              <th mat-header-cell *matHeaderCellDef>Correo</th>
+              <td mat-cell *matCellDef="let element">X</td>
+            </ng-container>
+
+            <!-- Telefono -->
+            <ng-container matColumnDef="telefono">
+              <th mat-header-cell *matHeaderCellDef>Telefono</th>
+              <td mat-cell *matCellDef="let element">X</td>
+            </ng-container>
+
+            <!-- Telefono -->
+            <ng-container matColumnDef="pais">
+              <th mat-header-cell *matHeaderCellDef>Pais</th>
+              <td mat-cell *matCellDef="let element">X</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

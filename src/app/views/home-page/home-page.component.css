@@ -15,7 +15,9 @@ table tr.mat-row {
   height: 15px;
 }
 
-.studentTable {
+.mensaje {
+  color: white;
+  font-weight: 500;
 }
 
 /* Option Buttons */

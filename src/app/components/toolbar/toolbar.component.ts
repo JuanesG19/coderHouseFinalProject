@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  loggeado: Boolean = false;
+
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.loggeadoObservable.subscribe((res) => {
+      this.loggeado = res;
+    });
   }
 
 }

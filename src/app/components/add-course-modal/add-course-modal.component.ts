@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Optional, Injector } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -17,18 +17,21 @@ export class AddCourseModalComponent implements OnInit {
 
   formComision = new FormControl('', [Validators.required]);
 
-
   courseForm = new FormGroup({
     comision: this.formComision,
   });
 
+  private dialogData = null;
+
   constructor(
-    private dialogRef: MatDialogRef<AddCourseModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any | null,
+    @Optional() private dialogRef: MatDialogRef<AddCourseModalComponent>,
+    private injector: Injector,
     public coursesService: CoursesService
   ) {
-    if (data) {
-      this.courseForm.patchValue(data);
+    this.dialogData = this.injector.get(MAT_DIALOG_DATA, null);
+
+    if (this.dialogData) {
+      this.courseForm.patchValue(this.dialogData);
     }
   }
 

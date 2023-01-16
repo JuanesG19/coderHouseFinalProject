@@ -28,32 +28,6 @@
       >
     </mat-form-field>
 
-    <!-- Curso -->
-    <mat-form-field appearance="fill">
-      <mat-label>Curso</mat-label>
-      <mat-select [formControl]="formNombreCurso">
-        <mat-option *ngFor="let course of courses" [value]="course.nombre">
-          {{ course.nombre }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="formNombreCurso.invalid"
-        >Se debe ingresar un curso</mat-error
-      >
-    </mat-form-field>
-
-    <!-- Comision -->
-    <mat-form-field appearance="fill">
-      <mat-label>Comision</mat-label>
-      <mat-select [formControl]="formComision">
-        <mat-option *ngFor="let course of courses" [value]="course.comision">
-          {{ course.comision }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="formComision.invalid"
-        >Se debe ingresar una comision</mat-error
-      >
-    </mat-form-field>
-
     <!-- Telefono -->
     <mat-form-field appearance="fill">
       <mat-label>Telefono</mat-label>

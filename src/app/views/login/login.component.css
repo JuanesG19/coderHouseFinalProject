@@ -1,22 +1,47 @@
 .login {
-  height: 100% !important;
-}
-
-.izquierda {
-}
-
-.derecha {
+  height: 90% !important;
   background-color: #1f2023 !important;
 }
-.mat-form-field {
-  width: 100%;
-  min-width: 300px;
+
+/* Izquierda */
+
+.izquierda {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-mat-card-title,
-mat-card-content {
-  display: flex;
-  justify-content: center;
+form p {
+  color: white;
+  font-size: 15px;
+}
+
+.imgLogo {
+  text-align: center;
+}
+
+.imgLogo img {
+  max-width: 100%;
+  max-height: 50px;
+}
+
+.input-group {
+  width: 100% !important;
+  min-width: 40vw;
+  padding-top: 15px;
+}
+
+input {
+  background-color: #2e2f36;
+  border: none;
+  padding: 10px;
+  color: white;
+}
+
+input:hover {
+  border: 2px solid #d7f913;
+  background-color: #2e2f36;
+  color: white;
 }
 
 .error {
@@ -29,8 +54,41 @@ mat-card-content {
 .button {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
+}
+
+button {
+  background-color: #eaff6a;
+  width: 100%;
+}
+
+.auxiliarText {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.auxiliarText p {
+  font-size: 17px;
+}
+
+p a:hover {
+  color: #eaff6a;
+}
+
+p a {
+  color: #eaff6a;
+}
+
+/* Derecha */
+.derecha {
+  background-color: #1f2023 !important;
+  background-image: url("../../../assets/img/imageLogin.png");
+  display: flex !important;
+  align-items: center !important;
 }
 
 .information {
-  font-size: 3em;
+  font-size: 3rem;
+  line-height: 30pt;
+  text-align: center;
 }

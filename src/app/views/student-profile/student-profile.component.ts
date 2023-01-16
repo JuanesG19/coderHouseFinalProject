@@ -28,7 +28,6 @@ export class StudentProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadData();
     this.id = this.route.snapshot.paramMap.get('id');
 
     this.studentsService.getStudentById(this.id).subscribe((res) => {
@@ -45,8 +44,6 @@ export class StudentProfileComponent implements OnInit {
       });
     });
   }
-
-  loadData() {}
 
   eliminarCurso(comision) {
     this.studentsService.deleteStudentsCourse(this.id, comision);

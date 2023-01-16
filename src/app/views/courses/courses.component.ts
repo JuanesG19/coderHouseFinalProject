@@ -19,11 +19,12 @@ export class CoursesComponent implements OnInit {
     'profesor',
     'estudiantes',
     'opciones',
+    'verMas',
   ];
 
   courses: Course[] = [];
   prueba: Course[] = [];
-  studentsList: Student[] = [];
+  studentsList: any[] = [];
 
   constructor(
     private matDialog: MatDialog,
@@ -36,7 +37,6 @@ export class CoursesComponent implements OnInit {
   }
 
   loadData() {
-
     this.coursesService.getCourses().subscribe((res) => {
       this.courses = res.map((e) => {
         return {
@@ -45,7 +45,7 @@ export class CoursesComponent implements OnInit {
         };
       });
     });
-    
+
     //Obtiene los estudiantes
     this.studentsService.getStudents().subscribe((res) => {
       this.studentsList = res.map((e) => {
@@ -54,25 +54,26 @@ export class CoursesComponent implements OnInit {
           ...(e.payload.doc.data() as Student),
         };
       });
-      /* for (let i = 0; i < this.courses.length; i++) {
+
+      var comisiones = [];
+      for (var i = 0; i < this.studentsList.length; i++) {
+        var prueba = this.studentsList[i].cursos;
+        for (var o = 0; o < prueba.length; o++) {
+          comisiones.push(prueba[o].comision);
+        }
+      }
+
+      for (var i = 0; i < this.courses.length; i++) {
+        var cursos = this.courses[i];
         var count = 0;
-        for (let o = 0; o < this.studentsList.length; o++) {
-          if (this.courses[i].comision === this.studentsList[o].comision) {
+        for (var o = 0; o < comisiones.length; o++) {
+          if (cursos.comision == comisiones[o]) {
             count++;
           }
         }
-        var newCourse = {
-          id: this.courses[i].id,
-          nombre: this.courses[i].nombre,
-          comision: this.courses[i].comision,
-          profesor: this.courses[i].profesor,
-          estudiantes: count,
-        };
-        this.coursesService.updateStudents(newCourse.id, count);
-      } */
+        this.coursesService.updateStudents(cursos.id, count)
+      }
     });
-
-    
   }
 
   openDialog() {

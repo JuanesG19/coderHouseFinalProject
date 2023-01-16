@@ -12,14 +12,9 @@ export class CoursesService {
     return this.firestore.collection('courses').snapshotChanges();
   }
 
-  /* getCourseByComision(as) {
-    var id = 'F2yO9H4F3YHG96ZisXNO';
-
-    return this.firestore
-      .collection('courses')
-      .doc(id)
-      .valueChanges();
-  } */
+  getCourseById(id) {
+    return this.firestore.collection('courses').doc(id).valueChanges();
+  }
 
   createCourse(course) {
     return new Promise<any>((resolve, reject) => {
@@ -49,10 +44,10 @@ export class CoursesService {
     return this.firestore.collection('courses').doc(course.id).delete();
   }
 
-  /*  updateStudents(id, students) {
+   updateStudents(id, students) {
     return this.firestore
       .collection('courses')
       .doc(id)
       .update({ estudiantes: students });
-  } */
+  }
 }
