@@ -4,6 +4,7 @@ import { RegisterCourseModalComponent } from 'src/app/components/register-course
 import { Course } from 'src/app/models/course.model';
 import { Student } from 'src/app/models/student.model';
 import { JsonService } from 'src/app/services/json.service';
+import { LoginService } from 'src/app/services/login.service';
 import { StudentsService } from 'src/app/services/students.service';
 import { CoursesService } from '../../services/courses.service';
 
@@ -13,27 +14,44 @@ import { CoursesService } from '../../services/courses.service';
   styleUrls: ['./courses.component.css'],
 })
 export class CoursesComponent implements OnInit {
-  displayedColumns: string[] = [
-    'nombre',
-    'comision',
-    'profesor',
-    'estudiantes',
-    'opciones',
-    'verMas',
-  ];
+  displayedColumns: string[] = [];
 
   courses: Course[] = [];
   prueba: Course[] = [];
   studentsList: any[] = [];
+  loggeado: Boolean;
 
   constructor(
     private matDialog: MatDialog,
     public coursesService: CoursesService,
-    public studentsService: StudentsService
+    public studentsService: StudentsService,
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
     this.loadData();
+
+    this.loginService.loggeadoObservable.subscribe((res) => {
+      this.loggeado = res;
+      console.log(this.loggeado);
+      if (this.loggeado == true) {
+        this.displayedColumns = [
+          'nombre',
+          'comision',
+          'profesor',
+          'estudiantes',
+          'opciones',
+          'verMas',
+        ];
+      } else {
+        this.displayedColumns = [
+          'nombre',
+          'comision',
+          'profesor',
+          'estudiantes',
+        ];
+      }
+    });
   }
 
   loadData() {
@@ -71,7 +89,7 @@ export class CoursesComponent implements OnInit {
             count++;
           }
         }
-        this.coursesService.updateStudents(cursos.id, count)
+        this.coursesService.updateStudents(cursos.id, count);
       }
     });
   }
@@ -90,10 +108,6 @@ export class CoursesComponent implements OnInit {
         this.coursesService.createCourse(newCourse);
       }
     });
-  }
-
-  eliminarCursos() {
-    /* this.courses = []; */
   }
 
   eliminarUno(course: Course) {

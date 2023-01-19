@@ -3,13 +3,10 @@
     <!-- Toolbar Interna -->
 
     <div class="tableContainer">
-      <section class="optionsButtons">
+      <section class="optionsButtons" *ngIf="loggeado">
         <div class="example-button-row">
           <button mat-raised-button (click)="openDialog()">
             Agregar Estudiante
-          </button>
-          <button mat-raised-button (click)="eliminarTodos()">
-            Eliminar Todos
           </button>
         </div>
       </section>

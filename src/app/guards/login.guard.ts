@@ -27,19 +27,17 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.loggeado == true) {
-      return this.router.navigate(['/students']).then(() => false);
-    }
-
-    alert('Debes Loggearte Primero');
-    return false;
-  }
-
-  hasLogin(): boolean {
     this.loginService.loggeadoObservable.subscribe((res) => {
       this.loggeado = res;
     });
 
-    return this.loggeado;
+    console.log(this.loggeado);
+
+    if (this.loggeado == true) {
+      return true;
+    }
+
+    alert('Debes Loggearte Primero');
+    return false;
   }
 }

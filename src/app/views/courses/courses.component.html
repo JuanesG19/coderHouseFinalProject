@@ -1,13 +1,10 @@
 <div class="coursesContainer">
   <div class="courses">
     <div class="tableContainer">
-      <section class="optionsButtons">
+      <section class="optionsButtons" *ngIf="loggeado">
         <div class="example-button-row">
           <button mat-raised-button (click)="openDialog()">
             Agregar Curso
-          </button>
-          <button mat-raised-button (click)="eliminarCursos()">
-            Eliminar Cursos
           </button>
         </div>
       </section>

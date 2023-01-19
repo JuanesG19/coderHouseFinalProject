@@ -37,6 +37,13 @@
       >
     </mat-form-field>
 
+    <!-- Pais -->
+    <mat-form-field appearance="fill">
+      <mat-label>Pais</mat-label>
+      <input matInput [formControl]="formPais" />
+      <mat-error *ngIf="formPais.invalid">Se debe ingresar su pais</mat-error>
+    </mat-form-field>
+
     <div class="sendButton">
       <button
         mat-button

@@ -24,12 +24,12 @@ export class HomePageComponent implements OnInit {
   ];
 
   studentsList: Student[] = [];
-  loggeado: Boolean = false;
+  loggeado: Boolean;
 
   constructor(
     private matDialog: MatDialog,
     public studentsService: StudentsService,
-    private loginService: LoginService,
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
@@ -62,21 +62,14 @@ export class HomePageComponent implements OnInit {
           nombres: value.nombres,
           apellidos: value.apellidos,
           correo: value.correo,
-          comision: [
-            { comision: '6666', nombreCurso: 'CSS' },
-            { comision: '1234', nombreCurso: 'Angular' },
-            { comision: '7777', nombreCurso: 'HTML' },
-          ],
+          comision: [],
           telefono: value.telefono,
           pais: value.pais,
         };
+        console.log(newStudent);
         this.studentsService.createStudent(newStudent);
       }
     });
-  }
-
-  eliminarTodos() {
-    /* this.studentsList = []; */
   }
 
   eliminarUno(student: Student) {
@@ -89,7 +82,20 @@ export class HomePageComponent implements OnInit {
     });
 
     dialog.afterClosed().subscribe((data) => {
-      this.studentsService.updateStudent(data, student.id);
+      if (data) {
+        var newStudent = {
+          nombres: data.nombres,
+          apellidos: data.apellidos,
+          cursos: data.cursos,
+          correo: data.correo,
+          telefono: data.telefono,
+          pais: data.pais,
+        };
+      }
+      console.log(data);
+      console.log(student.id);
+
+      this.studentsService.updateStudent(newStudent, student.id);
     });
   }
 }

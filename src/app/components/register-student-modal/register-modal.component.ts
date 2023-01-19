@@ -32,12 +32,17 @@ export class RegisterModalComponent implements OnInit {
     Validators.required,
     Validators.nullValidator,
   ]);
+  formPais = new FormControl('', [
+    Validators.required,
+    Validators.nullValidator,
+  ]);
 
   studentForm = new FormGroup({
     nombres: this.formNombres,
     apellidos: this.formApellidos,
     correo: this.formCorreo,
     telefono: this.formTelefono,
+    pais: this.formPais,
   });
 
   private dialogData = null;
@@ -48,7 +53,7 @@ export class RegisterModalComponent implements OnInit {
     public coursesService: CoursesService
   ) {
     this.dialogData = this.injector.get(MAT_DIALOG_DATA, null);
-    this.dialogData;
+    
     if (this.dialogData) {
       this.studentForm.patchValue(this.dialogData);
     }
