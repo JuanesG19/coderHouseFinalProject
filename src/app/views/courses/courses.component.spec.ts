@@ -18,6 +18,7 @@ describe('CoursesComponent', () => {
         MatDialogModule,
         RouterTestingModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
+        HttpClientTestingModule,
       ],
     }).compileComponents();
   });

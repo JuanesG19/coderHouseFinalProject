@@ -22,7 +22,6 @@ describe('RegisterModalComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-
       ],
     }).compileComponents();
   });
@@ -35,5 +34,41 @@ describe('RegisterModalComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  /* Pruebas Personalizadas */
+
+  /* El formulario retorna invalido cuando solo se agrega un campo */
+  it('The form return invalid', () => {
+    fixture = TestBed.createComponent(RegisterModalComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    const form = component.studentForm;
+    const name = form.controls['nombres'];
+    name.setValue('Testing');
+    expect(form.invalid).toBeTrue;
+  });
+
+  /* El formulario retorna valido */
+  it('The form return valid', () => {
+    fixture = TestBed.createComponent(RegisterModalComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    const form = component.studentForm;
+    const nombres = form.controls['nombres'];
+    const apellidos = form.controls['apellidos'];
+    const correo = form.controls['correo'];
+    const telefono = form.controls['telefono'];
+    const pais = form.controls['pais'];
+
+    nombres.setValue('Testing');
+    apellidos.setValue('Testing');
+    correo.setValue('Testing');
+    telefono.setValue('Testing');
+    pais.setValue('Testing');
+
+    expect(form.invalid).toBeTrue;
   });
 });

@@ -35,6 +35,37 @@ describe('RegisterCourseModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
 
-/* Prueba Personalizada 1 */
+  /* Pruebas Personalizadas */
+
+  /* El formulario retorna invalido cuando solo se agrega un campo */
+  it('The form return invalid', () => {
+    fixture = TestBed.createComponent(RegisterCourseModalComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    const form = component.courseForm;
+    const name = form.controls['nombre'];
+
+    name.setValue('Testing');
+    expect(form.invalid).toBeTrue;
+  });
+
+  /* El formulario retorna valido */
+  it('The form return valid', () => {
+    fixture = TestBed.createComponent(RegisterCourseModalComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    const form = component.courseForm;
+    const nombre = form.controls['nombre'];
+    const comision = form.controls['comision'];
+    const profesor = form.controls['profesor'];
+
+    nombre.setValue('Testing');
+    comision.setValue('Testing');
+    profesor.setValue('Testing');
+
+    expect(form.invalid).toBeTrue;
+  });
+});
