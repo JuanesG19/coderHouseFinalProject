@@ -1,8 +1,5 @@
 <div class="coursesContainer">
   <div class="courses">
-    <!-- Toolbar Interna -->
-    <app-toolbar></app-toolbar>
-
     <div class="tableContainer">
       <section class="optionsButtons">
         <div class="example-button-row">
@@ -60,7 +57,10 @@
           <th mat-header-cell *matHeaderCellDef>Ver mas</th>
           <!-- Editar -->
           <td mat-cell *matCellDef="let element">
-            <a mat-icon-button [routerLink]="['/courseProfile', element.comision]">
+            <a
+              mat-icon-button
+              [routerLink]="['/courseProfile', element.comision]"
+            >
               <mat-icon>visibility</mat-icon>
             </a>
           </td>
