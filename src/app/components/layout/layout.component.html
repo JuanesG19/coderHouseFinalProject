@@ -25,7 +25,12 @@
       </button>
 
       <!-- Alumnos -->
-      <button mat-button class="menu-button" [routerLink]="['/students']" *ngIf="loggeado">
+      <button
+        mat-button
+        class="menu-button"
+        [routerLink]="['/students']"
+        *ngIf="loggeado"
+      >
         <mat-icon>person</mat-icon>
         <span>Alumnos</span>
       </button>
@@ -87,10 +92,12 @@
           >
             <mat-icon>notifications</mat-icon>
           </button>
-          <img
-            class="avatar mat-elevation-z8"
-            src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
-          />
+          <button mat-button (click)="logout()">
+            <img
+              class="avatar mat-elevation-z8"
+              src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
+            />
+          </button>
         </div>
         <ng-template #noLoggeado>
           <button mat-button [routerLink]="['/login']">Iniciar Sesión</button>

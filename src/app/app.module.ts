@@ -19,10 +19,12 @@ import { StudentProfileComponent } from './views/student-profile/student-profile
 import { AddCourseModalComponent } from './components/add-course-modal/add-course-modal.component';
 import { CourseProfileComponent } from './views/course-profile/course-profile.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
-import { AngularFireModule, FIREBASE_OPTIONS } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
+import { StoreModule } from '@ngrx/store';
+import { loginReducer } from './ngrx/reducers/login.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     FirebaseModule,
     MatDialogModule,
+    StoreModule.forRoot({ loginState: loginReducer }),
+    /* StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }), */
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },

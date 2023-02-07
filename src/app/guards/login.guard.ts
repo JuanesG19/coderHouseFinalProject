@@ -8,8 +8,13 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { LoginService } from '../services/login.service';
+
+interface LoginStore {
+  loginState: Boolean;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +22,11 @@ import { LoginService } from '../services/login.service';
 export class LoginGuard implements CanActivate {
   loggeado: any;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private loginStore: Store<LoginStore>
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -27,8 +36,8 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    this.loginService.loggeadoObservable.subscribe((res) => {
-      this.loggeado = res;
+    this.loginStore.subscribe((res) => {
+      this.loggeado = res.loginState;
     });
 
     console.log(this.loggeado);

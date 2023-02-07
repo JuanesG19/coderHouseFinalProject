@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import { RegisterCourseModalComponent } from 'src/app/components/register-course-modal/register-course-modal.component';
 import { Course } from 'src/app/models/course.model';
 import { Student } from 'src/app/models/student.model';
@@ -7,6 +8,10 @@ import { JsonService } from 'src/app/services/json.service';
 import { LoginService } from 'src/app/services/login.service';
 import { StudentsService } from 'src/app/services/students.service';
 import { CoursesService } from '../../services/courses.service';
+
+interface LoginStore {
+  loginState: Boolean;
+}
 
 @Component({
   selector: 'app-courses',
@@ -25,15 +30,15 @@ export class CoursesComponent implements OnInit {
     private matDialog: MatDialog,
     public coursesService: CoursesService,
     public studentsService: StudentsService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private loginStore: Store<LoginStore>
   ) {}
 
   ngOnInit(): void {
     this.loadData();
 
-    this.loginService.loggeadoObservable.subscribe((res) => {
-      this.loggeado = res;
-      console.log(this.loggeado);
+    this.loginStore.subscribe((res) => {
+      this.loggeado = res.loginState;
       if (this.loggeado == true) {
         this.displayedColumns = [
           'nombre',

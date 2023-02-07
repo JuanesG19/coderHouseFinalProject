@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { LogoutAction } from 'src/app/ngrx/actions/login.actions';
 import { LoginService } from 'src/app/services/login.service';
+
+interface LoginStore {
+  loginState: Boolean;
+}
 
 @Component({
   selector: 'app-layout',
@@ -14,14 +20,21 @@ export class LayoutComponent implements OnInit {
   logoCoder: string;
   coderSlogan: string;
 
-  constructor(private loginService: LoginService) {
+  constructor(
+    private loginStore: Store<LoginStore>
+  ) {
     this.logoCoder = '../../../../assets/img/logoCoder.png';
     this.coderSlogan = '../../../../assets/img/coderSlogan.png';
   }
 
   ngOnInit(): void {
-    this.loginService.loggeadoObservable.subscribe((res) => {
-      this.loggeado = res;
+    this.loginStore.subscribe((res) => {
+      this.loggeado = res.loginState;
     });
+  }
+
+  logout(){
+    const action = new LogoutAction();
+    this.loginStore.dispatch(action);
   }
 }

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { LoginAction } from 'src/app/ngrx/actions/login.actions';
 import { LoginService } from 'src/app/services/login.service';
+
+interface LoginStore {
+  loginState: Boolean;
+}
 
 @Component({
   selector: 'app-login',
@@ -29,29 +35,38 @@ export class LoginComponent implements OnInit {
     password: this.formPassword,
   });
 
-  constructor(public loginService: LoginService, private router: Router) {
+  constructor(
+    public loginService: LoginService,
+    private router: Router,
+    private loginStore: Store<LoginStore>
+  ) {
     this.logoCoderBlack = '../../../../assets/img/logoCoder.png';
     this.coderSlogan = '../../../../assets/img/coderSlogan.png';
     this.imageLogin = '../../../../assets/img/imageLogin.png';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onSubmit() {
+    var succes = false;
     this.loginService.getUsers().subscribe((res) => {
       this.users = res as [];
-      /*       console.log( this.users);
-       */
       for (var i = 0; i < this.users.length; i++) {
         if (
           this.users[i]['username'] == this.formUsername.value &&
           this.users[i]['password'] == this.formPassword.value
         ) {
-          this.loginService.logginState(true);
+          succes = true;
+          const action = new LoginAction();
+
+          this.loginStore.dispatch(action);
           this.router.navigate(['/']);
-        } else {
-          console.log('No loggeado');
         }
+      }
+
+      if (succes == !true) {
+        alert('Usuario o Contraseña Incorrecto');
       }
     });
   }

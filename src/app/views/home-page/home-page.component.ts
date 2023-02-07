@@ -6,6 +6,11 @@ import { JsonService } from 'src/app/services/json.service';
 import { StudentsService } from '../../services/students.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+interface LoginStore {
+  loginState: Boolean;
+}
 
 @Component({
   selector: 'app-home-page',
@@ -29,16 +34,16 @@ export class HomePageComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     public studentsService: StudentsService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private loginStore: Store<LoginStore>
   ) {}
 
   ngOnInit(): void {
     this.loadData();
 
-    this.loginService.loggeadoObservable.subscribe((res) => {
-      this.loggeado = res;
-      console.log(this.loggeado);
-    });
+    this.loginStore.subscribe(res => {
+      this.loggeado = res.loginState;
+    })
   }
 
   loadData() {

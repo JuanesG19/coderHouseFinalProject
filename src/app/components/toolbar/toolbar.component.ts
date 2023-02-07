@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { LoginService } from 'src/app/services/login.service';
+
+interface LoginStore {
+  loginState: Boolean;
+}
 
 @Component({
   selector: 'app-toolbar',
@@ -9,11 +14,15 @@ import { LoginService } from 'src/app/services/login.service';
 export class ToolbarComponent implements OnInit {
   loggeado: Boolean;
 
-  constructor(private loginService: LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    private loginStore: Store<LoginStore>
+  ) {}
 
   ngOnInit(): void {
-    this.loginService.loggeadoObservable.subscribe((res) => {
-      this.loggeado = res;
+    this.loginStore.subscribe((res) => {
+      this.loggeado = res.loginState;
+      console.log(res);
     });
   }
 }
