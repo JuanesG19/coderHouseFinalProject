@@ -23,7 +23,6 @@ export class CoursesService {
         .add(course)
         .then(
           (response) => {
-            console.log(response);
           },
           (error) => {
             reject(error);

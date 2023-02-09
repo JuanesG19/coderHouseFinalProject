@@ -64,7 +64,6 @@ export class CourseProfileComponent implements OnInit {
           }
         }
       }
-      console.log(this.studentsCourse);
     });
   }
 }

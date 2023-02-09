@@ -28,7 +28,6 @@ export class StudentsService {
         .add(student)
         .then(
           (response) => {
-            console.log(response);
           },
           (error) => {
             reject(error);
@@ -43,7 +42,6 @@ export class StudentsService {
       student.cursos = [];
     }
 
-    console.log(student);
 
     return this.firestore.collection('students').doc(id).update({
       nombres: student.nombres,

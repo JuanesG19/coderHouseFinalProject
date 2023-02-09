@@ -40,7 +40,6 @@ export class LoginGuard implements CanActivate {
       this.loggeado = res.loginState;
     });
 
-    console.log(this.loggeado);
 
     if (this.loggeado == true) {
       return true;

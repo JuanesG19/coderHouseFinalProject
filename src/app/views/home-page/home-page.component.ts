@@ -54,7 +54,6 @@ export class HomePageComponent implements OnInit {
           ...(e.payload.doc.data() as Student),
         };
       });
-      console.log(this.studentsList);
     });
   }
 
@@ -71,7 +70,6 @@ export class HomePageComponent implements OnInit {
           telefono: value.telefono,
           pais: value.pais,
         };
-        console.log(newStudent);
         this.studentsService.createStudent(newStudent);
       }
     });
@@ -97,8 +95,6 @@ export class HomePageComponent implements OnInit {
           pais: data.pais,
         };
       }
-      console.log(data);
-      console.log(student.id);
 
       this.studentsService.updateStudent(newStudent, student.id);
     });

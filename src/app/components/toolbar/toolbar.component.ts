@@ -22,7 +22,6 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
     this.loginStore.subscribe((res) => {
       this.loggeado = res.loginState;
-      console.log(res);
     });
   }
 }
